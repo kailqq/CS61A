@@ -659,7 +659,7 @@ class ScaryThrower(ThrowerAnt):
     def throw_at(self, target):
         # BEGIN Problem EC
         "*** YOUR CODE HERE ***"
-        if target and not hasattr(target,'scared'):
+        if target and not hasattr(target,'scared'):#if there is a scared attribute, it means the bee has been scared before
             apply_status(make_scare, target, 2)
         # END Problem EC
 
