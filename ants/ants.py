@@ -411,9 +411,10 @@ class TankAnt(ContainerAnt):
         # BEGIN Problem 10
         if self.contained_ant:
             self.contained_ant.action(gamestate)
-        iter_bee=self.place.bees[:]
-        for bee in iter_bee:    
-            bee.reduce_armor(self.damage)
+        if self.place is not None:
+           iter_bee=self.place.bees[:]
+           for bee in iter_bee:    
+               bee.reduce_armor(self.damage)
         "*** YOUR CODE HERE ***"
         # END Problem 10
 
