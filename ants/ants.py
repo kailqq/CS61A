@@ -612,7 +612,7 @@ def make_scare(action, bee):
     def new_action(gamestate):
         bee.scared=True
         old_action(gamestate)
-        bee.scared=False
+        bee.scared=False#reset the scared attribute
     return new_action
     # END Problem EC
 
@@ -673,7 +673,7 @@ class LaserAnt(ThrowerAnt):
     implemented = True   # Change to True to view in the GUI
     # END Problem OPTIONAL
 
-    def __init__(self, armor=1):
+    def __init__(self, armor=1000):
         ThrowerAnt.__init__(self, armor)
         self.insects_shot = 0
 
@@ -683,7 +683,7 @@ class LaserAnt(ThrowerAnt):
         insects = {}
         distance = 0
         while p is not beehive:
-            if p.ant:
+            if p.ant and p.ant is not self:
                 insects[p.ant] = distance
             for bee in p.bees:
                 insects[bee] = distance
@@ -694,7 +694,7 @@ class LaserAnt(ThrowerAnt):
 
     def calculate_damage(self, distance):
         # BEGIN Problem OPTIONAL
-        damage = 2 - 0.2*distance-0.05*(self.insects_shot-1)
+        damage = 2 - 0.2*distance-0.05*(self.insects_shot)
         if damage<=0:
             damage = 0
         return damage
